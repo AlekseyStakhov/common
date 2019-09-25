@@ -4,7 +4,7 @@ This is a list of functions that should be completed.
 
 from typing import Any
 from typing import List
-
+import string
 
 class OurAwesomeException(Exception):
     pass
@@ -15,7 +15,8 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     If @first and @second has same value should return True
     In another case should return False
     """
-    pass
+    return first == second
+
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -23,7 +24,7 @@ def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    pass
+    return type(first) == type(second)
 
 
 def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
@@ -31,7 +32,7 @@ def is_two_objects_is_the_same_objects(first: Any, second: Any) -> bool:
     If @first and @second has same type should return True
     In another case should return False
     """
-    pass
+    return first is second
 
 
 def multiple_ints(first_value: int, second_value: int) -> int:
@@ -48,7 +49,10 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    pass
+    if not isinstance(first_value, int) or not isinstance(second_value, int):
+        raise ValueError
+    else:
+        return first_value * second_value
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -78,7 +82,10 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
             print("Not valid input data")
         >>> "Not valid input data"
     """
-    pass
+    try:
+        return int(first_value) * int(second_value)
+    except ValueError:
+        raise ValueError
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -97,14 +104,19 @@ def is_word_in_text(word: str, text: str) -> bool:
         >>> False
 
     """
-    pass
+    return word in text.split()
 
 
 def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
-    pass
+    a_list = []
+    for i in range(0, 13):
+        if i == 6 or i == 7:
+            continue
+        a_list.append(i)
+    return a_list
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -116,7 +128,12 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
-    pass
+    new_data = []
+    for i in data:
+        if i < 0:
+            continue
+        new_data.append(i)
+    return new_data
 
 
 def alphabet() -> dict:
@@ -127,7 +144,10 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
-    pass
+    my_list1 = range(1, 27)
+    my_list2 = list(string. ascii_lowercase)
+    my_dict = dict(zip(my_list1, my_list2))
+    return my_dict
 
 
 def simple_sort(data: List[int]) -> List[list]:
@@ -139,4 +159,8 @@ def simple_sort(data: List[int]) -> List[list]:
     Returns:
 
     """
-    pass
+    for i in range(len(data)):
+        for j in range(i+1, len(data)):
+            if data[i] > data[j]:
+                data[i], data[j] = data[j], data[i]
+    return data
