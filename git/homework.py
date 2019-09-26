@@ -6,6 +6,7 @@ from typing import Any
 from typing import List
 import string
 
+
 class OurAwesomeException(Exception):
     pass
 
@@ -16,7 +17,6 @@ def is_two_object_has_same_value(first: Any, second: Any) -> bool:
     In another case should return False
     """
     return first == second
-
 
 
 def is_two_objects_has_same_type(first: Any, second: Any) -> bool:
@@ -145,7 +145,7 @@ def alphabet() -> dict:
         >>> {"a": 1, "b": 2 ...}
     """
     my_list1 = range(1, 27)
-    my_list2 = list(string. ascii_lowercase)
+    my_list2 = list(string.ascii_lowercase)
     my_dict = dict(zip(my_list1, my_list2))
     return my_dict
 
@@ -160,7 +160,7 @@ def simple_sort(data: List[int]) -> List[list]:
 
     """
     for i in range(len(data)):
-        for j in range(i+1, len(data)):
+        for j in range(i + 1, len(data)):
             if data[i] > data[j]:
                 data[i], data[j] = data[j], data[i]
     return data
