@@ -164,8 +164,7 @@ class TestSQLQueries(unittest.TestCase):
             actual_result = [dict(record) for record in actual_result]
             expected_result = self.load_rows_from_file("task_8.json")
 
-        for i, row in enumerate(actual_result):
-            self.assertDictEqual(row, expected_result[i])
+        self.assertCountEqual(actual_result, expected_result)
 
     def test_task_9(self):
         with self.conn.cursor(cursor_factory=RealDictCursor) as cursor:
