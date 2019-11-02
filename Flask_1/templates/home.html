@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+{% block content %}
+    <div class="two_link">
+        Select the list:
+        <ul>
+            <li>
+                <div><a href="/vegetables">List of vegetables</a></div>
+            </li>
+            <li>
+                <div><a href="{{url_for('return_fruits')}}">List of fruits</a></div>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
