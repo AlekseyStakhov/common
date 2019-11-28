@@ -1,6 +1,8 @@
 from typing import List, Dict, Union, Generator
 
 # We will work with such dicts
+import data as data
+
 ST = Dict[str, Union[str, int]]
 # And we will put this dicts in list
 DT = List[ST]
@@ -30,10 +32,9 @@ def task_2_remove_dict_fields(data: DT, redundant_keys: List[str]) -> DT:
         >>> [{'name': 'Alex'}, {'name': 'denys'}]
     """
     for d in data:
-        if 'sex' and 'name' in d:
-            del d['sex'], d['name']
+        for i in redundant_keys:
+            d.pop(i)
     return data
-
 
 def task_3_find_item_via_value(data: DT, value) -> DT:
     """
@@ -42,10 +43,7 @@ def task_3_find_item_via_value(data: DT, value) -> DT:
         find_item_via_value([{'name': 'Alex', 'age': 26}, {'name': 'denys', 'age': 89}], 26)
         >>> [{'name': 'Alex', 'age': 26}]
     """
-
-    for i in data:
-        if value in i.values():
-            return [i]
+    return [i for i in data for y in i.values() if y == value]
 
 
 def task_4_min_value_integers(data: List[int]) -> int:
